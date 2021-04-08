@@ -3,7 +3,7 @@ import os
 
 t1 = time.time()
 topDir = os.path.expanduser('~/Downloads/baby-names/')
-with open(topDir + 'names-unique.txt')) as f:
+with open(topDir + 'names-unique.txt') as f:
   txt = f.read().splitlines()
 
 nameCounts = {}
@@ -15,7 +15,7 @@ for line in txt:
 t3 = time.time()
 
 # Process combined record for all years
-with open(topDir + 'combined.txt')) as f:
+with open(topDir + 'combined.txt') as f:
   txt = f.readlines()
 for i in txt:
   vals = i.split(',')
@@ -29,11 +29,14 @@ results = sorted(results, key = lambda x:x[1],reverse=True)
 
 t5 = time.time()
 # Save results
-with open(topDir + 'results.txt'),'w+') as f:
+with open(topDir + 'results.txt','w+') as f:
+  s = '{:^10} {:^30} {:^10}\n'.format('Rank','Name','Count')
+  f.write(s)
+  f.write('-'*10+' '+'-'*30+' '+'-'*10+'\n')
   for i,j in enumerate(results):
     s = '{:^10,} {:^30} {:^10,}\n'.format(i+1,j[0],j[1])
     f.write(s)
 t6 = time.time()
 print((t5-t1)*1000.,(t6-t5)*1000.)
-print(results[-10:])
+print(results[:10])
 
