@@ -20,4 +20,5 @@ results = sorted(zipped, key=lambda x:x[1], reverse=True)
 with open(topDir+'names-lengths.txt','w+') as f:
   for i,j in results:
     f.write('{:20} {:}\n'.format(i,j))
-print(results[:10])
+for i,j in results[:10]:
+  print('',i,j)

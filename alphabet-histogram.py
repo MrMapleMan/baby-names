@@ -15,5 +15,11 @@ for i in range(10000):
   txt += letters[random.randint(0,lenLetters-1)]
   counts[txt[-1]]+=1
 
-print(counts)
+keys = list(counts.keys())
+vals = list(counts.values())
 
+zipped = zip(keys,vals)
+zippedSorted = sorted(zipped, key=lambda x:x[1], reverse=True)
+
+for i,j in enumerate(zippedSorted):
+  print('{:02} | {:}: {:4}'.format(i,j[0],j[1]))
